@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="5dp"
+    android:orientation="vertical"
+    android:paddingRight="5dp"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="wrap_content">
+
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:orientation="horizontal"
+       android:layout_height="match_parent">
+       <TextView
+           android:layout_width="0dp"
+           android:layout_height="wrap_content"
+           android:gravity="center_horizontal"
+           android:text="@string/twicesearchtip"
+           android:id="@+id/textView2"
+           android:layout_below="@+id/bookCancelButton"
+           android:layout_weight="3"
+           />
+       <Button
+           android:layout_width="0dp"
+           android:layout_weight="1"
+           android:layout_height="wrap_content"
+           android:text="@string/searchtwice"
+           android:id="@+id/bookSecondarySearchButton2"
+           />
+   </LinearLayout>
+    <ProgressBar
+        android:layout_gravity="center_horizontal"
+        android:layout_width="match_parent"
+        style="?android:attr/progressBarStyle"
+        android:visibility="gone"
+        android:id="@+id/searchbooklistpro"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:visibility="gone"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
+        android:textColor="@color/red"
+        android:id="@+id/searchbooktips"
+        android:text="正在查找书籍"/>
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/bookSearchResultRecyclerView"
+        />
+   <!-- <ListView
+        android:layout_width="match_parent"
+        android:id="@+id/searchbooklist"
+        android:layout_height="wrap_content">
+
+    </ListView>-->
+
+</LinearLayout>
+    <ProgressBar
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        style="?android:attr/progressBarStyle"
+        android:visibility="gone"
+        android:id="@+id/refreshpagepro"
+        android:layout_height="wrap_content"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:textColor="@color/red"
+        android:id="@+id/nomoretv"
+        android:textSize="20sp"
+        android:layout_marginBottom="20dp"
+        android:gravity="center_horizontal"
+        android:text="没有更多了~"
+        android:visibility="gone"
+        />
+</RelativeLayout>

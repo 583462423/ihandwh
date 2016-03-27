@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="colorPrimary">#03a9f0</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="my">#00CFFF</color>
+    <color name="bookSeatButton">#00CFFF</color>
+    <color name="orange">#FFD700</color>
+    <color name="swipe_color_1">#B6DB49</color>
+    <color name="swipe_color_2">#99CC00</color>
+    <color name="swipe_color_3">#8ABD00</color>
+    <color name="swipe_color_4">#7CAF00</color>
+    <color name="red">#ff0000</color>
+    <color name="book_seat_stripe_color">#FF0000</color>
+    <color name="search_book_stripe_color">#00FF00</color>
+    <color name="config_center_stripe_color">#0000FF</color>
+    <color name="book_seat_title_color">#00CFFF</color>
+    <color name="black">#000000</color>
+    <color name="cardview_picked_color">#AAAAAA</color>
+    <color name="basecolor">#CCCCCC</color>
+    <color name="green">#00ff00</color>
+    <color name="white">#ffffff</color>
+    <color name="gray">#C0C0C0</color>
+    <color name="shallow_gray">#E5E5E5</color>
+    <color name="mynormal01">#00CFFF</color>
+    <color name="mypress01">#6ca0ac</color>
+    <color name="darkRed">#990033</color>
+    <color name="primary_material_dark">#1a6bac</color>
+
+    <!-- ActionBar背景色 -->
+    <color name="holo_primary">#2196f3</color>
+
+    <color name="bright_foreground_disabled_holo_dark">#4c4c4c</color>
+    <color name="bright_foreground_holo_dark">#1b4cbf</color>
+
+    <!-- 主界面背景色 -->
+    <color name="background_holo_light">#EDEDED</color>
+    <color name="foreground_material_light">#f5f5f5</color>
+    <color name="primary_text_default_material_light">#f5f5f5</color>
+    <color name="primary_text_material_light">#f5f5f5</color>
+
+</resources>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="nettype">
+        <item>WLAN</item>
+        <item>移动数据</item>
+    </string-array>
+</resources>

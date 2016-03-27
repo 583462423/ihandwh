@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/Widget.BookInfo.CardView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/bookInfoCardView">
+   <!-- <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="失控"
+            android:id="@+id/bookNameTextView"
+            android:layout_alignParentLeft="false"
+            android:layout_alignParentStart="false"
+            android:textSize="@dimen/small_text"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="G303-49/10"
+            android:id="@+id/bookIdTextView"
+            android:layout_alignParentRight="false"
+            android:layout_alignParentEnd="false"
+            android:textSize="@dimen/small_text"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="false"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/bookNameTextView" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="剩余0本,共3本"
+            android:id="@+id/bookCountTextView"
+            android:textSize="@dimen/small_text"
+            android:layout_alignBottom="@+id/bookAuthorTextView"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="(美)凯文*凯丽著 新星出版社 2010"
+            android:id="@+id/bookAuthorTextView"
+            android:layout_alignParentTop="false"
+            android:layout_toLeftOf="@+id/bookCountTextView"
+            android:layout_toStartOf="@+id/bookCountTextView"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/bookIdTextView"
+            android:textSize="@dimen/very_small_text"
+            android:layout_alignParentLeft="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="三楼"
+            android:id="@+id/bookPosTextView"
+            android:textSize="@dimen/medium_text"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+        <ImageView
+            android:layout_width="180dp"
+            android:layout_height="40dp"
+            android:id="@+id/bookMapImageView"
+            android:layout_alignParentLeft="true"
+            android:background="#ff0000"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/bookAuthorTextView" />
+
+        <ImageView
+            android:layout_width="180dp"
+            android:layout_height="40dp"
+            android:background="#00ff00"
+            android:id="@+id/bookMarkImageView"
+            android:layout_alignBottom="@+id/bookMapImageView"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="false" />
+    </RelativeLayout>-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="5"
+                android:layout_height="fill_parent"
+                android:text="失控"
+                android:id="@+id/floorNameTextView"
+                android:textSize="@dimen/small_text"
+                android:textStyle="bold" />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="fill_parent"
+                android:text="三楼"
+                android:id="@+id/bookPosTextView"
+                android:textSize="@dimen/medium_text"
+               />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:text="G303-49/10"
+                android:id="@+id/bookIdTextView"
+                android:textSize="@dimen/small_text"
+                android:layout_below="@+id/floorNameTextView" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="5"
+                android:layout_height="fill_parent"
+                android:text="(美)凯文*凯丽著 新星出版社 2010"
+                android:id="@+id/bookAuthorTextView"
+                android:textSize="@dimen/very_small_text" />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:text="剩余0本,共3本"
+                android:layout_weight="2"
+                android:id="@+id/floorUsageTextView"
+                android:textSize="@dimen/small_text"
+                android:layout_alignBottom="@+id/bookAuthorTextView"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:id="@+id/bookMapImageView"
+                android:layout_height="40dp"
+                android:background="@drawable/map"
+                android:layout_marginLeft="30dp"
+                android:layout_below="@+id/bookAuthorTextView" />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="5"
+                android:layout_height="fill_parent" />
+
+            <ToggleButton
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:textOn=""
+                android:textOff=""
+                android:checked="false"
+                android:background="@drawable/add_on"
+                android:layout_height="fill_parent"
+                android:id="@+id/btncollectmap"
+                android:layout_marginRight="10dp"/>
+           <!-- <Button
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:background="@drawable/add_on"
+                android:layout_height="fill_parent"
+                android:id="@+id/btnsavemap"
+                android:layout_marginRight="10dp" />-->
+        </LinearLayout>
+    </LinearLayout>
+</android.support.v7.widget.CardView>

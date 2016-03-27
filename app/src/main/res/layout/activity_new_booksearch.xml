@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:paddingLeft="8dp"
+    android:paddingRight="8dp">
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/newsearchhistorylistviewlistview"
+        android:dividerHeight="2dp"
+        android:visibility="gone"
+        android:textAlignment="center"
+        android:divider="@color/basecolor">
+    </ListView>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_height_normal"
+        android:textAlignment="center"
+        android:background="@drawable/image_search_book_clear_history_button"
+        android:text="@string/clesr_search_history"
+        android:id="@+id/newsearchbtnclearhis"/>
+    <LinearLayout
+        android:layout_marginTop="100dp"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        android:layout_height="@dimen/button_height_normal">
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:text="书名搜索"
+            android:visibility="gone"
+            android:id="@+id/newsearchbyname"
+            android:background="@drawable/image_search_book_buttons" />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="0.6"
+            android:layout_height="wrap_content">
+        </LinearLayout>
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:visibility="gone"
+            android:id="@+id/newsearchbyauthor"
+            android:layout_height="match_parent"
+            android:text="作者搜索"
+            android:background="@drawable/image_search_book_buttons" />
+
+
+
+    </LinearLayout>
+
+</LinearLayout>

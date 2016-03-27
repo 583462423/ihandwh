@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/Widget.SelectFloor.CardView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:visibility="visible"
+    android:id="@+id/customSpinnerListContainer">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <GridView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/gridView"
+            android:choiceMode="singleChoice"
+            android:numColumns="3"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_above="@+id/fieldDivider" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/select_floor_list_divider_height"
+            android:id="@+id/fieldDivider"
+            android:layout_above="@+id/textViewBottom"
+            android:background="@color/gray">
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="不限"
+            android:id="@+id/textViewBottom"
+            android:layout_gravity="center_horizontal"
+            android:layout_alignParentBottom="true"
+            android:gravity="center_horizontal"
+            android:layout_centerHorizontal="true"
+            android:textSize="@dimen/select_floor_list_text_size"
+            android:layout_marginBottom="@dimen/select_floor_list_bottom_text_margin"
+            android:layout_marginTop="@dimen/select_floor_list_bottom_text_margin" />
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>
