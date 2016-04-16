@@ -4,6 +4,7 @@
     <color name="colorPrimary">#03a9f0</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="colorAccentNo">#862647</color>
     <color name="my">#00CFFF</color>
     <color name="bookSeatButton">#00CFFF</color>
     <color name="orange">#FFD700</color>
@@ -39,5 +40,10 @@
     <color name="foreground_material_light">#f5f5f5</color>
     <color name="primary_text_default_material_light">#f5f5f5</color>
     <color name="primary_text_material_light">#f5f5f5</color>
+
+    <!--无背景按钮点击与不点击背景颜色-->
+    <color name="no_back_btn_nopress">#000a0a0a</color>
+    <color name="no_back_btn_press">#afcccccc</color>
+    <color name="black_semi_transparent">#B2000000</color>
 
 </resources>

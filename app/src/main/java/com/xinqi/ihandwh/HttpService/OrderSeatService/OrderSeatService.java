@@ -374,28 +374,20 @@ public class OrderSeatService extends Service{
     public static String subYuYueInfo(HttpClient client, String room, String sitNo, String date) throws Exception
     {
 
-        Log.i("bac","调用");
         // 发送get请求
         String reqUrl = "http://yuyue.juneberry.cn/BookSeat/BookSeatMessage.aspx?seatNo=" + room + sitNo + "&seatShortNo=" + sitNo + "&roomNo=" + room + "&date=" + date;
-        Log.i("bac","11111111111111111111111111111111111111111111111");
         String s = HttpTools.GetHTTPRequest(reqUrl, client);
-        Log.i("bac","222222222222222222222222222222222222222222222222");
         //System.out.println("s:" + s);
         // 需要解析出__EVENTVALIDATION和__VIEWSTATE字段
         String []strs = parseEandVAttri(s).split(",");
-        Log.i("bac","3333333333333333333333333333333333333333333333333");
         List<NameValuePair> postParameters = new ArrayList<NameValuePair>();
-        Log.i("bac","44444444444444444444444444444444444444444444444");
         // 构建实体数据
         postParameters.add(new BasicNameValuePair("subCmd", "query"));
         postParameters.add(new BasicNameValuePair("__EVENTVALIDATION", strs[1]));
         postParameters.add(new BasicNameValuePair("__VIEWSTATE", strs[0]));
         //Log.i("bac",strs.toString()+"---------------");
         // 发送post请求
-        Log.i("bac","5555555555555555555555555555555555555555555555");
         String res = HttpTools.PostHTTPRequest(reqUrl, client, postParameters);
-        Log.i("bac","666666666666666666666666666666666666666666");
-        Log.i("bac","subYuYueInfo:"+res);
         return res;
     }
     /**

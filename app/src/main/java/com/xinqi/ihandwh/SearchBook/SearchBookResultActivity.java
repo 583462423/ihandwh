@@ -81,7 +81,7 @@ public class SearchBookResultActivity extends AppCompatActivity implements Searc
         searchprogressbar= (ProgressBar) findViewById(R.id.searchbooklistpro);
         searchprogressbar.setVisibility(View.VISIBLE);
         refreshpageprobar= (ProgressBar) findViewById(R.id.refreshpagepro);
-        mPrimaryKeyWord = intent.getStringExtra(SearchBookConst.SEARCH_BOOK_KEY);
+        mPrimaryKeyWord = intent.getStringExtra(SearchBookConst.SEARCH_BOOK_KEY); //书名
         mPrimaryType=intent.getStringExtra(SearchBookConst.SEARCH_TYPE);
 //        View view01=LayoutInflater.from(this).inflate(R.layout.newsearchactionbar02,null);
         View view01=actionBar.getCustomView();

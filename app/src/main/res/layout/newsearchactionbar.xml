@@ -5,6 +5,8 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
+        android:layout_margin="2dp"
+        android:elevation="10dp"
         android:layout_height="wrap_content">
         <SearchView
             android:layout_width="0dp"
@@ -14,6 +16,7 @@
             android:layout_height="wrap_content"
             android:iconifiedByDefault="false">
         </SearchView>
+
         <Button
             android:layout_width="40dp"
             android:layout_height="wrap_content"
@@ -23,7 +26,5 @@
             android:background="#00000000"
            />
     </LinearLayout>
-
-
 
 </LinearLayout>

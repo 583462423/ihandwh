@@ -4,6 +4,8 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.umeng.analytics.MobclickAgent;
+import com.xinqi.ihandwh.LibraryActivity;
 import com.xinqi.ihandwh.Local_Utils.UserinfoUtils;
 import com.xinqi.ihandwh.R;
 
@@ -50,6 +53,7 @@ public class ConfigCenterContentPage extends Fragment implements View.OnClickLis
         //id_tv.setOnClickListener(this);
         view.findViewById(R.id.btn_see_order_record).setOnClickListener(this);
         view.findViewById(R.id.btn_see_collect_book_route).setOnClickListener(this);
+        view.findViewById(R.id.btn_my_library).setOnClickListener(this);
         btnlog_in_out= (Button) view.findViewById(R.id.btn_log_in_out);
         btnlog_in_out.setOnClickListener(this);
         view.findViewById(R.id.aboutBtn).setOnClickListener(this);
@@ -133,10 +137,7 @@ public class ConfigCenterContentPage extends Fragment implements View.OnClickLis
 //                    intent.putExtra("from",2);
                     startActivityForResult(intent,1);
                     //getActivity().finish();
-
 //                    startActivityForResult(intent,2);
-
-
                 // TODO: 2015/11/25
                 }
                 break;
@@ -148,8 +149,15 @@ public class ConfigCenterContentPage extends Fragment implements View.OnClickLis
                 if (haslogin) {
                         startActivity(new Intent(getActivity(),SeeOrderSeatHistory.class));
                 }else {
-                    Log.i("bac","未登录");
-                    Toast.makeText(getActivity(),"请先登录！",Toast.LENGTH_SHORT).show();
+                    Log.i("bac", "未登录");
+
+                    //Toast.makeText(getActivity(),"请先登录！",Toast.LENGTH_SHORT).show();
+                    Snackbar.make(getActivity().getWindow().getDecorView(),"请先登录!",Snackbar.LENGTH_SHORT).setAction("登录",new View.OnClickListener(){
+                        @Override
+                        public void onClick(View v) {
+                            startActivityForResult(new Intent(getActivity(), LoginActivity.class),1);
+                        }
+                    }).show();
                 }
                 break;
             case R.id.btn_see_collect_book_route:
@@ -160,6 +168,9 @@ public class ConfigCenterContentPage extends Fragment implements View.OnClickLis
                 break;
             case R.id.getDeviceTokenBtn:
                 startActivity(new Intent(getActivity(),DeviceTokenActivity.class));
+                break;
+            case R.id.btn_my_library:
+                startActivity(new Intent(getActivity(), LibraryActivity.class));
                 break;
             default:break;
         }

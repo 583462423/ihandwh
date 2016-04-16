@@ -28,7 +28,6 @@ public class CustomFeedBackActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         actionBar=getSupportActionBar();
-        setContentView(R.layout.see_collected_book_route);
         actionBar.setTitle("进行反馈");
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeAsUpIndicator(R.drawable.psdback1);

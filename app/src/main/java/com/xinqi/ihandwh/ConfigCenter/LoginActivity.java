@@ -148,7 +148,6 @@ public class LoginActivity extends AppCompatActivity {
         };
         //验证登陆信息是否符合,验证成功则发送handler消息
         new Thread(){
-
             @Override
             public void run() {
                 Message message=new Message();

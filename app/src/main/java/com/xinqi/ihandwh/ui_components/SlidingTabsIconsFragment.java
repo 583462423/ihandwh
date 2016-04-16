@@ -21,6 +21,7 @@ import android.app.ActionBar;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -116,6 +117,7 @@ public class SlidingTabsIconsFragment extends Fragment {
      * A {@link ViewPager} which will be used in conjunction with the {@link SlidingTabLayout} above.
      */
     private ViewPager mViewPager;
+    private TabLayout mTabLayout;
 
     /**
      * List of {@link Fragment} which represent this sample's tabs.
@@ -131,11 +133,16 @@ public class SlidingTabsIconsFragment extends Fragment {
          * Populate our tab list with tabs. Each item contains a title, indicator color and divider
          * color, which are used by {@link SlidingTabLayout}.
          */
+
+
+        //  TODO  底部状态栏 --begin
+
         //添加预约座位Fragment
         mTabs.add(new SamplePagerItem(BookSeatsContentPage.newInstance(),
                 getResources().getString(R.string.book_seats_title), // Title
                 Color.RED, // Indicator color
                 Color.GRAY,// Divider color
+
                 R.drawable.tabs_title_icon1,
                 R.drawable.tabs_title_selected1));
         //添加查找书籍Fragment
@@ -154,6 +161,8 @@ public class SlidingTabsIconsFragment extends Fragment {
                 Color.GRAY,
                 R.drawable.tabs_title_icon3,
                 R.drawable.tabs_title_selected3));
+
+        // TODO 底部状态栏 end
         // END_INCLUDE (populate_tabs)
     }
     /**
@@ -163,7 +172,9 @@ public class SlidingTabsIconsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.sliding_tabs_icons_main_layout, container, false);
+        View view =  inflater.inflate(R.layout.sliding_tabs_icons_main_layout, container, false);
+        mTabLayout = (TabLayout) view.findViewById(R.id.mTabLayout);
+        return view;
     }
 
     // BEGIN_INCLUDE (fragment_onviewcreated)
@@ -186,59 +197,114 @@ public class SlidingTabsIconsFragment extends Fragment {
         mViewPager.setAdapter(new SampleFragmentPagerAdapter(getChildFragmentManager()));
         // END_INCLUDE (setup_viewpager)
 
+
+        // TODO 给自定义Tablaytou设置ViewPager
+
+        mTabLayout.setupWithViewPager(mViewPager);
+        final TabLayout.Tab one = mTabLayout.getTabAt(0);
+        final TabLayout.Tab two = mTabLayout.getTabAt(1);
+        final TabLayout.Tab three = mTabLayout.getTabAt(2);
+        //one.setIcon(mTabs.get(0).get2ndIconRes());
+        one.setCustomView(R.layout.tab_custom_view);
+        two.setCustomView(R.layout.tab_custom_view);
+        three.setCustomView(R.layout.tab_custom_view);
+
+        one.getCustomView().findViewById(R.id.imageView).setBackgroundResource(mTabs.get(0).get2ndIconRes());
+        two.getCustomView().findViewById(R.id.imageView).setBackgroundResource(mTabs.get(1).getIconRes());
+        three.getCustomView().findViewById(R.id.imageView).setBackgroundResource(mTabs.get(2).getIconRes());
+
+        final TextView textView = (TextView) getActivity().getWindow().getDecorView().findViewById(R.id.toolBarTitle);
+        textView.setText(mTabs.get(0).getTitle());
+        mTabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                if (tab == mTabLayout.getTabAt(0)) {
+                    one.getCustomView().findViewById(R.id.imageView).setBackgroundResource(mTabs.get(0).get2ndIconRes());
+                    mViewPager.setCurrentItem(0);
+                    textView.setText(mTabs.get(0).getTitle());
+                } else if (tab == mTabLayout.getTabAt(1)) {
+                    two.getCustomView().findViewById(R.id.imageView).setBackgroundResource(mTabs.get(1).get2ndIconRes());
+                    mViewPager.setCurrentItem(1);
+                    textView.setText(mTabs.get(1).getTitle());
+                } else if (tab == mTabLayout.getTabAt(2)) {
+                    three.getCustomView().findViewById(R.id.imageView).setBackgroundResource(mTabs.get(2).get2ndIconRes());
+                    mViewPager.setCurrentItem(2);
+                    textView.setText(mTabs.get(2).getTitle());
+                }
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+                if (tab == mTabLayout.getTabAt(0)) {
+                    one.getCustomView().findViewById(R.id.imageView).setBackgroundResource(mTabs.get(0).getIconRes());
+                } else if (tab == mTabLayout.getTabAt(1)) {
+                    two.getCustomView().findViewById(R.id.imageView).setBackgroundResource(mTabs.get(1).getIconRes());
+                } else if (tab == mTabLayout.getTabAt(2)) {
+                    three.getCustomView().findViewById(R.id.imageView).setBackgroundResource(mTabs.get(2).getIconRes());
+                }
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
+        // TODO 自定义结束
+
+
         // BEGIN_INCLUDE (setup_slidingtablayout)
         // Give the SlidingTabLayout the ViewPager, this must be done AFTER the ViewPager has had
         // it's PagerAdapter set.
-        mSlidingTabLayout = (SlidingTabLayout) view.findViewById(R.id.sliding_tabs);
-        mSlidingTabLayout.setCustomTabView(R.layout.sliding_tabs_icons_selector_bar_item, R.id.selectorText, R.id.selectorIcon);
+        //2016/3/29 mSlidingTabLayout = (SlidingTabLayout) view.findViewById(R.id.sliding_tabs);
+        //2016/3/29  mSlidingTabLayout.setCustomTabView(R.layout.sliding_tabs_icons_selector_bar_item, R.id.selectorText, R.id.selectorIcon);
         // BEGIN_INCLUDE (tab_colorizer)
         // Set a TabColorizer to customize the indicator and divider colors. Here we just retrieve
         // the tab at the position, and return it's set color
-        mSlidingTabLayout.setCustomTabColorizer(new SlidingTabLayout.TabColorizer() {
+        //2016/3/29 mSlidingTabLayout.setCustomTabColorizer(new SlidingTabLayout.TabColorizer() {
 
-            @Override
-            public int getIndicatorColor(int position) {
-                return mTabs.get(position).getIndicatorColor();
-            }
-
-            @Override
-            public int getDividerColor(int position) {
-                return mTabs.get(position).getDividerColor();
-            }
-        });
-
-        mSlidingTabLayout.setCustomIconsResSet(new SlidingTabLayout.IconsRes() {
-            @Override
-            public List<Integer> getIconsSet() {
-                return null;
-            }
-
-            @Override
-            public int getIconAt(int position) {
-                return mTabs.get(position).getIconRes();
-            }
-
-            @Override
-            public int get2ndIconAt(int position) {
-                return mTabs.get(position).get2ndIconRes();
-            }
-        });
-
-        mSlidingTabLayout.setActionBarInterface(new SlidingTabLayout.ActionBarInterface() {
-            @Override
-            public ActionBar getCustomActionBar() {
-                return getActivity().getActionBar();
-            }
-
-            @Override
-            public TextView getTitle() {
-                return (TextView)(getActivity().getActionBar().getCustomView().findViewById(R.id.textViewTitle));
-            }
-        });
-
-        mSlidingTabLayout.setDistributeEvenly(true);
-
-        mSlidingTabLayout.setViewPager(mViewPager);
+//            @Override
+//            public int getIndicatorColor(int position) {
+//                return mTabs.get(position).getIndicatorColor();
+//            }
+//
+//            @Override
+//            public int getDividerColor(int position) {
+//                return mTabs.get(position).getDividerColor();
+//            }
+//        });
+//
+//        mSlidingTabLayout.setCustomIconsResSet(new SlidingTabLayout.IconsRes() {
+//            @Override
+//            public List<Integer> getIconsSet() {
+//                return null;
+//            }
+//
+//            @Override
+//            public int getIconAt(int position) {
+//                return mTabs.get(position).getIconRes();
+//            }
+//
+//            @Override
+//            public int get2ndIconAt(int position) {
+//                return mTabs.get(position).get2ndIconRes();
+//            }
+//        });
+//
+//        mSlidingTabLayout.setActionBarInterface(new SlidingTabLayout.ActionBarInterface() {
+//            @Override
+//            public ActionBar getCustomActionBar() {
+//                return getActivity().getActionBar();
+//            }
+//
+//            @Override
+//            public TextView getTitle() {
+//                return (TextView) getActivity().getWindow().getDecorView().findViewById(R.id.toolBarTitle);
+//            }
+//        });
+//
+//        mSlidingTabLayout.setDistributeEvenly(true);
+//
+//        mSlidingTabLayout.setViewPager(mViewPager);
 
 
         // END_INCLUDE (tab_colorizer)
@@ -282,11 +348,6 @@ public class SlidingTabsIconsFragment extends Fragment {
          * <p>
          * Here we return the value returned from {@link SamplePagerItem#getTitle()}.
          */
-        @Override
-        public CharSequence getPageTitle(int position) {
-            return mTabs.get(position).getTitle();
-        }
-        // END_INCLUDE (pageradapter_getpagetitle)
 
     }
 

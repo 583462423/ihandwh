@@ -8,9 +8,12 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.transition.Fade;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
@@ -40,6 +43,7 @@ public class NewSearch extends AppCompatActivity implements View.OnClickListener
         super.onCreate(savedInstanceState);
         actionBar=getSupportActionBar();
         setContentView(R.layout.activity_new_booksearch);
+
         actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         actionBar.setCustomView(R.layout.newsearchactionbar);
         actionBar.show();
@@ -204,6 +208,7 @@ public class NewSearch extends AppCompatActivity implements View.OnClickListener
                 String leatest02 = sharedPreferences.getString("searchhis002", null);
                 String leatest01 = sharedPreferences.getString("searchhis001", null);
                 String s = searchView.getQuery().toString().trim();
+                Log.i("-----------==------",s);
                 if (!s.equals(leatest01) && !s.equals(leatest02) && !s.equals(leatest03)) {
                     editor.putString("searchhis003", sharedPreferences.getString("searchhis002", null));
                     editor.putString("searchhis002", sharedPreferences.getString("searchhis001", null));

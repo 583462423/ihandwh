@@ -4,13 +4,14 @@
     android:layout_height="match_parent"
     android:focusable="true"
     android:focusableInTouchMode="true"
+
     android:paddingLeft="8dp"
     android:paddingRight="8dp">
     <ListView
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/newsearchhistorylistviewlistview"
-        android:dividerHeight="2dp"
         android:visibility="gone"
         android:textAlignment="center"
         android:divider="@color/basecolor">
@@ -19,7 +20,8 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/button_height_normal"
         android:textAlignment="center"
-        android:background="@drawable/image_search_book_clear_history_button"
+        android:textColor="@color/white"
+        android:background="@drawable/btn_background"
         android:text="@string/clesr_search_history"
         android:id="@+id/newsearchbtnclearhis"/>
     <LinearLayout
@@ -35,8 +37,9 @@
             android:layout_height="match_parent"
             android:text="书名搜索"
             android:visibility="gone"
+            android:textColor="@color/white"
             android:id="@+id/newsearchbyname"
-            android:background="@drawable/image_search_book_buttons" />
+            android:background="@drawable/btn_background" />
         <LinearLayout
             android:layout_width="0dp"
             android:layout_weight="0.6"
@@ -49,7 +52,8 @@
             android:id="@+id/newsearchbyauthor"
             android:layout_height="match_parent"
             android:text="作者搜索"
-            android:background="@drawable/image_search_book_buttons" />
+            android:textColor="@color/white"
+            android:background="@drawable/btn_background" />
 
 
 

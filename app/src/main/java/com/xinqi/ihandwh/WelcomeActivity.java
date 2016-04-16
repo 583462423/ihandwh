@@ -22,7 +22,7 @@ public class WelcomeActivity extends Activity {
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
     //欢迎界面停留时间
-    private static final int TIME_DELAY=2000;
+    private static final int TIME_DELAY=1500;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

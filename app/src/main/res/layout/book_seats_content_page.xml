@@ -50,6 +50,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
+
     </android.support.v4.widget.SwipeRefreshLayout>
    <!-- <TextView
         android:layout_width="fill_parent"
@@ -57,6 +58,11 @@
         android:textAlignment="center"
         android:text="@string/bookseathometip"/>-->
     />
+    <TextView
+        android:id="@+id/seatInfoLoader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"/>
 
     <Button
         android:layout_width="match_parent"

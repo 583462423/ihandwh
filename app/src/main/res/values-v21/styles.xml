@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="HomeActivityTheme" parent="android:Theme.Material.Light">
+    <style name="HomeActivityTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:colorPrimary">@color/colorPrimary</item>
         <item name="android:colorBackground">@color/background_holo_light</item>
         <item name="android:statusBarColor">@color/colorPrimary</item>

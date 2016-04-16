@@ -323,8 +323,8 @@ public class SlidingTabLayout extends HorizontalScrollView {
 
         ((ImageView)v.findViewById(mTabViewIconId)).setImageResource(mIconsRes.get2ndIconAt(position));
 
-        if(mActionBar!=null)
-            mActionBar.getTitle().setText(mViewPager.getAdapter().getPageTitle(position));
+        //if(mActionBar!=null)
+          //  mActionBar.getTitle().setText(mViewPager.getAdapter().getPageTitle(position));
 
         mLastSelectedTab=position;
     }

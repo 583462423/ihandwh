@@ -30,6 +30,8 @@ import com.xinqi.ihandwh.Model.FloorInfo;
 import com.umeng.analytics.MobclickAgent;
 import com.xinqi.ihandwh.R;
 
+import org.w3c.dom.Text;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -43,6 +45,7 @@ import java.util.TimerTask;
  * Created by Presisco on 2015/9/28.
  */
 public class BookSeatsContentPage extends Fragment{
+    private boolean seatLoader = false;
     public static boolean isfirstin=true;
     private static final String LOG_TAG = BookSeatsContentPage.class.getSimpleName();
     private static final Integer COLUMN_COUNT=3;
@@ -63,11 +66,13 @@ public class BookSeatsContentPage extends Fragment{
     /**
      * The {@link RecyclerView} that displays the content that should be refreshed.
      */
+    private TextView textView;
     private RecyclerView mFloorInfoRecyclerView;
     private FloorInfoAdapter mFloorInfoAdapter;
     private RecyclerView.LayoutManager mRecyclerViewLayoutManager;
     private FloorInfo[] mDataSet;
     private FloorInfoHelper floorInfoHelper;
+    private int floorSize;
 
     private DummyBackgroundTask taskHandle;
     private WifiManager wifiManager;
@@ -100,6 +105,7 @@ public class BookSeatsContentPage extends Fragment{
         isfirstin=sharedPreferences.getBoolean("isfirstin",true);
         hasknow= sharedPreferences.getBoolean("knowpull",false);
         View view=inflater.inflate(R.layout.book_seats_content_page, container, false);
+        textView = (TextView) view.findViewById(R.id.seatInfoLoader);
 //        if (!hasknow)tvrefresh.setVisibility(View.VISIBLE);
         Log.d("BookSeatsCP", "onCreateView()");
         //Test Data Gen
@@ -113,7 +119,8 @@ public class BookSeatsContentPage extends Fragment{
                 setNetwork();
 
             }else {
-                Toast.makeText(getActivity(),"正在加载座位信息...",Toast.LENGTH_SHORT).show();
+                seatLoading(textView);
+                seatLoader = false;
                 initiateRefresh();
             }
         }else {
@@ -165,17 +172,20 @@ public class BookSeatsContentPage extends Fragment{
 
     private void genTestData01() {
         List<FloorInfo> floorInfos=floorInfoHelper.quryFloorinfo();
-        if (floorInfos.size()==0){
+        floorSize = floorInfos.size();
+        Log.w("-----------------",""+floorSize);
+        if (floorSize==0){
             genTestData();
             Log.i("bac","000000");
         }else {
             Log.i("bac","000000");
             this.mDataSet = new FloorInfo[12];
-                for (int i = 0; i < 12; i++) {
+            genTestData();
+                for (int i = 0; i < floorSize; i++) {
                     mDataSet[i] = new FloorInfo();
-                    mDataSet[i].layer = floorInfos.get(11 - i).layer;
-                    mDataSet[i].total = floorInfos.get(11 - i).total;
-                    mDataSet[i].rest = floorInfos.get(11 - i).rest;
+                    mDataSet[i].layer = floorInfos.get(floorSize-1 - i).layer;
+                    mDataSet[i].total = floorInfos.get(floorSize-1 - i).total;
+                    mDataSet[i].rest = floorInfos.get(floorSize-1 - i).rest;
                /* mSeatsInfoDataSet[i].total = 100;
                 mSeatsInfoDataSet[i].rest = 100;*/
                 }
@@ -207,7 +217,6 @@ public class BookSeatsContentPage extends Fragment{
 //                initiateRefresh();
                 if (!checkNetworkState()){//网络不可用
                     setNetwork();
-
                 }else {
                    initiateRefresh();
                 }
@@ -219,11 +228,25 @@ public class BookSeatsContentPage extends Fragment{
     public void onResume() {
         super.onResume();
         MobclickAgent.onPageStart("BookSeat"); //统计页面
+        if(seatLoader)seatLoaderDone(textView);
+        else seatLoading(textView);
     }
     public void onPause() {
         super.onPause();
         MobclickAgent.onPageEnd("BookSeat");
 //        taskHandle.cancel(true);
+    }
+
+    private void seatLoaderDone(TextView textView)
+    {
+        textView.setText("座位信息加载完成");
+        textView.setTextColor(getResources().getColor(R.color.black));
+    }
+
+    private void seatLoading(TextView textView)
+    {
+        textView.setTextColor(getResources().getColor(R.color.colorAccent));
+        textView.setText("正在加载座位信息...");
     }
     private boolean checkNetworkState() {
         boolean flag = false;
@@ -298,6 +321,7 @@ public class BookSeatsContentPage extends Fragment{
         //提示开始加载
         taskHandle=new DummyBackgroundTask();
         taskHandle.execute();
+
         Log.i("bac", "initiateRefreshsssssssssssssssss");
     }
     // END_INCLUDE (initiate_refresh)
@@ -317,7 +341,8 @@ public class BookSeatsContentPage extends Fragment{
         mFloorInfoAdapter.updateDataSet(mDataSet);
         mFloorInfoAdapter.notifyDataSetChanged();
         // Stop the refreshing indicator
-        Toast.makeText(getActivity(),"座位信息加载完成",Toast.LENGTH_SHORT).show();
+        seatLoaderDone(textView);
+        seatLoader = true;
         mSwipeRefreshLayout.setRefreshing(false);
 
     }
@@ -363,7 +388,6 @@ public class BookSeatsContentPage extends Fragment{
             } catch (Exception e) {
                 e.printStackTrace();
                 Log.i("bac","网络还未设置好！"+e.toString());
-
             }
             // Return a new random list of cheeses
             return 0;

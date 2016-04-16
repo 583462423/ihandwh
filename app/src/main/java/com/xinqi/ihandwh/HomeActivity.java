@@ -6,13 +6,17 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.RippleDrawable;
 import android.net.ConnectivityManager;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.WindowManager;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.umeng.message.UmengRegistrar;
@@ -31,7 +35,7 @@ import java.util.Date;
  * Created by syd on 2015/11/12.
  */
 
-public class HomeActivity extends FragmentActivity {
+public class HomeActivity extends AppCompatActivity {
     long pre_click_time;
     android.app.ActionBar actionBar;
     private SlidingTabsIconsFragment mSlidingTabsHost;
@@ -44,7 +48,6 @@ public class HomeActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
 
        // TODO 2016/3/27  低版本实现沉浸式状态栏
         //透明状态栏
@@ -68,16 +71,22 @@ public class HomeActivity extends FragmentActivity {
         MobclickAgent.onProfileSignIn(usr.get_LastId());
         PushAgent.getInstance(this).onAppStart();
 
-        ActionBar mActionBar = getActionBar();
+
+        // TODO 2016/3/29 修改actionbar实现方式为Toolbar
+        Toolbar mToolBar = (Toolbar) findViewById(R.id.myToolBar);
+        mToolBar.setTitle("");
+        setSupportActionBar(mToolBar);
+
+       /* ActionBar mActionBar = getActionBar();
         if (mActionBar == null)
             return;
 
         // TODO: 2016/3/27 修改自定义Actionbar在5.0版本以下出现最上边白线问题
         mActionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         mActionBar.setDisplayShowCustomEnabled(true);
-        mActionBar.setCustomView(R.layout.action_bar_main);
+        mActionBar.setCustomView(R.layout.action_bar_main);*/
 
-        Log.d("Umeng Push Info", "Device Token:"+UmengRegistrar.getRegistrationId(this));
+        Log.d("Umeng Push Info", "Device Token:" + UmengRegistrar.getRegistrationId(this));
     }
 
     //实现按两次退出程序
@@ -110,11 +119,6 @@ public class HomeActivity extends FragmentActivity {
         }
         if (!flag) {
             setNetwork();
-        } else {
-            // Intent it = new Intent(this, ViewPager.class);
-            // startActivity(it);
-            // // isNetworkAvailable();
-
         }
 
         return flag;

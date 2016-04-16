@@ -1,21 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <android.support.v4.view.ViewPager
           android:id="@+id/content_viewpager"
           android:layout_width="match_parent"
-          android:layout_height="fill_parent"
+          android:layout_height="0dp"
+        android:layout_weight="1"
         android:background="@android:color/white"
         android:layout_alignParentTop="true"
         android:layout_above="@+id/sliding_tabs" />
 
-    <com.xinqi.ihandwh.ui_components.SlidingTabLayout
-          android:id="@+id/sliding_tabs"
-          android:layout_width="match_parent"
-          android:layout_height="@dimen/tabs_height"
-        android:layout_alignParentBottom="true"
-        android:background="#f5f5f5" />
 
-</RelativeLayout>
+    <android.support.design.widget.TabLayout
+        android:id="@+id/mTabLayout"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        app:tabIndicatorHeight="0dp"
+        app:tabMode="fixed"
+        android:background="#f5f5f5"
+        app:tabGravity ="fill"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/tabs_height"></android.support.design.widget.TabLayout>
+
+</LinearLayout>

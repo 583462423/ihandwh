@@ -1,23 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/configue"
     android:background="#D3D3D3">
-   <LinearLayout
-       android:layout_marginTop="40dp"
-       android:layout_width="fill_parent"
+   <android.support.v7.widget.CardView
+       android:id="@+id/id_1"
+       android:layout_width="match_parent"
        android:layout_height="110dp"
        android:background="#ffffff"
        android:padding="10dp"
        android:orientation="vertical">
-       <!-- <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginLeft="40dp"
-            android:layout_gravity="center_vertical"
-            android:background="@drawable/personal_active"/>-->
-           <!--android:text="登录学号\n\n2013435324443215"-->
+
        <TextView
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
@@ -27,105 +21,85 @@
            android:textColor="@color/mypress01"
            android:id="@+id/id_tv"
            android:gravity="center_horizontal"
+           android:elevation="10dp"
            />
-   </LinearLayout>
-    <ImageView
+
+
+   </android.support.v7.widget.CardView>
+    <android.support.v7.widget.CardView
+        android:layout_below="@id/id_1"
         android:layout_marginTop="40dp"
-        android:layout_width="fill_parent"
-        android:layout_height="45dp"
-        android:background="@drawable/order_history_bacground"
-        android:id="@+id/btn_see_order_record"
-        >
-       <!-- <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginLeft="40dp"
-            android:layout_gravity="center_vertical"
-            android:background="@drawable/orderhis"/>
-        <TextView
-            android:background="@drawable/persona_line_bacground"
-            android:layout_marginLeft="10dp"
-            android:layout_width="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:text="预约记录"/>
--->
-    </ImageView>
-    <ImageView
-        android:layout_marginTop="1dp"
-        android:layout_width="fill_parent"
-        android:layout_height="45dp"
-        android:background="@drawable/book_rout_bacground"
-        android:id="@+id/btn_see_collect_book_route"
-       >
-       <!-- <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginLeft="40dp"
-            android:layout_gravity="center_vertical"
-            android:background="@drawable/collect"/>
-        <TextView
-            android:paddingLeft="10dp"
-            android:layout_gravity="center_vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:text="借书路线收藏"/>-->
-    </ImageView>
-    <ImageView
-        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:background="@drawable/feedback_bacground"
-        android:id="@+id/feedBackBtn"/>
-  <!--  <LinearLayout
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+                <include android:id="@+id/btn_my_library" layout="@layout/menu_item_my_library"/>
+                <include android:id="@+id/btn_see_order_record" layout="@layout/menu_item_record" />
+
+                <!--<ImageView-->
+                    <!--android:layout_width="fill_parent"-->
+                    <!--android:layout_height="45dp"-->
+                    <!--android:background="@drawable/order_history_bacground"-->
+                    <!--android:id="@+id/btn_see_order_record"-->
+                    <!--&gt;-->
+                <!--</ImageView>-->
+
+            <include android:id="@+id/btn_see_collect_book_route" layout="@layout/menu_item_route"/>
+                <!--<ImageView-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="45dp"-->
+                    <!--android:background="@drawable/book_rout_bacground"-->
+                    <!--android:id="@+id/btn_see_collect_book_route"-->
+                   <!--&gt;-->
+                <!--</ImageView>-->
+
+
+            <include android:id="@+id/feedBackBtn" layout="@layout/menu_item_feedback"/>
+                <!--<ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:background="@drawable/feedback_bacground"
+                    android:id="@+id/feedBackBtn"/-->
+
+
+            <include android:id="@+id/aboutBtn" layout="@layout/menu_item_aboutus"/>
+                <!--
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:background="@drawable/about_our_bacground"
+                    android:padding="10dp"
+                    android:id="@+id/aboutBtn">
+                </ImageView>-->
+
+
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+
+    <LinearLayout
         android:layout_marginTop="5dp"
+        android:layout_alignParentBottom="true"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-
-        android:orientation="horizontal">-->
-      <!--  <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginLeft="40dp"
-            android:layout_gravity="center_vertical"
-            android:background="@drawable/feedback"/>
-        <TextView
-            android:paddingLeft="10dp"
-            android:layout_gravity="center_vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:text="进行反馈"/>-->
-
-    <!--</LinearLayout>-->
-    <ImageView
-        android:layout_marginTop="10dp"
-        android:layout_width="fill_parent"
-        android:layout_height="45dp"
-        android:background="@drawable/about_our_bacground"
-        android:padding="10dp"
-        android:id="@+id/aboutBtn"
-        android:orientation="horizontal">
-    </ImageView>
-        <LinearLayout
-            android:layout_marginTop="5dp"
+        android:orientation="horizontal"
+        android:visibility="gone">
+        <Button
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:visibility="gone">
-            <Button
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:background="#ffffff"
-                android:visibility="visible"
-                android:id="@+id/getDeviceTokenBtn"
-                android:text="获取设备Token"
-                android:enabled="true" />
-        </LinearLayout>
+            android:textSize="20sp"
+            android:background="#ffffff"
+            android:visibility="visible"
+            android:id="@+id/getDeviceTokenBtn"
+            android:text="获取设备Token"
+            android:enabled="true" />
+    </LinearLayout>
+
     <LinearLayout
+        android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         >
@@ -140,4 +114,11 @@
             android:background="@drawable/btn_login_bacground"
             />
     </LinearLayout>
-</LinearLayout>
+
+    <android.support.design.widget.CoordinatorLayout
+        android:id="@+id/mCoordinatorlayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </android.support.design.widget.CoordinatorLayout>
+</RelativeLayout>
