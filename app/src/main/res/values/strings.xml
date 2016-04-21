@@ -44,7 +44,7 @@
     <string name="text_random_seat">不限</string>
     <string name="feedBack">进行反馈</string>
     <string name="oreder_record">预约记录</string>
-    <string name="book_route">借书路线收藏</string>
+    <string name="book_route">图书收藏</string>
     <string name="about_us">关于我们</string>
     <string name="my_library">我的图书馆</string>
     <string name="text_floor_spinner_unavailable"> </string>
